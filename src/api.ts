@@ -4,9 +4,9 @@ import axios from 'axios';
 const API_BASE_URL = "http://localhost";  // Cambia a la URL de tus microservicios en producción
 
 // Endpoint para el servicio de pedidos (orders-service)
-export const requestOrder = () => {
+export const requestOrder = async () => {
   console.log('AQUI ',localStorage.getItem('token'));
-  const callAxios = axios.post('https://7s9x7vuh2m.execute-api.us-east-1.amazonaws.com/dev/order', {
+  const callAxios = await axios.post('https://7s9x7vuh2m.execute-api.us-east-1.amazonaws.com/dev/order', {
   }, {
     headers: {
       'Authorization': `Bearer ${ localStorage.getItem('token')}`,
