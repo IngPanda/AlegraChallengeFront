@@ -1,0 +1,33 @@
+version: '3'
+services:
+  orders-service:
+    build: ./backend/orders-service
+    ports:
+      - '3000:3000'
+    networks:
+      - app-network
+
+  kitchen-service:
+    build: ./backend/kitchen-service
+    ports:
+      - '3000:3001'
+    networks:
+      - app-network
+
+  inventory-service:
+    build: ./backend/inventory-service
+    ports:
+      - '3000:3002'
+    networks:
+      - app-network
+
+  frontend:
+    build: ./frontend
+    ports:
+      - '80:80'
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
