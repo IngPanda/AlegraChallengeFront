@@ -6,13 +6,15 @@ const OrderButton: React.FC = () => {
   const [message, setMessage] = useState('');
 
   const handleOrder = async () => {
+    console.log("handleOrder called"); // Confirmación de que handleOrder se llama
     setLoading(true);
     setMessage('');
-    console.log("handleOrder called");
     try {
       const response = await requestOrder();
+      console.log("API response:", response); // Verifica la respuesta de la API
       setMessage(`Orden generada: ${response.data.dish.name}`);
     } catch (error) {
+      console.error("API request failed:", error); // Registra el error
       setMessage('Error al generar la orden');
     }
     setLoading(false);
