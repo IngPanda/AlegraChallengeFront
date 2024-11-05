@@ -1,10 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-
-const HistoryOrders = () => {
-  const [orders, setOrders] = useState([]);
+interface Order {
+  id: string; 
+  customer: string;
+  dish: any;
+  status: string;
+}
+const PreparingOrders = () => {
+  const [orders, setOrders] = useState<Order[]>([]); 
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchOrders = async () => {
@@ -15,7 +20,7 @@ const HistoryOrders = () => {
         }
 
         const response = await axios.get(
-          'https://7s9x7vuh2m.execute-api.us-east-1.amazonaws.com/dev/history',
+          'https://7s9x7vuh2m.execute-api.us-east-1.amazonaws.com/dev/orders',
           {
             headers: {
               'Authorization': `Bearer ${token}`,
@@ -23,10 +28,14 @@ const HistoryOrders = () => {
             },
           }
         );
-        setOrders(response.data);
-      }   catch (err) {
-       console.log(err);
-      }finally {
+        setOrders(response.data.orders);
+      } catch (err) {
+        if (err instanceof Error) {
+          setError(err.message);
+        } else {
+          setError('An unknown error occurred');
+        }
+      } finally {
         setLoading(false);
       }
     };
@@ -39,7 +48,7 @@ const HistoryOrders = () => {
 
   return (
     <div>
-      <h2>Historial de Ordenes</h2>
+      <h2>Órdenes en Preparación</h2>
       {orders.length === 0 ? (
         <p>No hay órdenes en preparación.</p>
       ) : (
@@ -47,8 +56,8 @@ const HistoryOrders = () => {
           {orders.map((order) => (
             <li key={order.id}>
               <p><strong>Orden ID:</strong> {order.id}</p>
-              <p><strong>Plato:</strong> {order.dish.name}</p>
-              <p><strong>Estado:</strong> {order.status}</p>
+              <p><strong>Cliente:</strong> {order.customer}</p>
+              <p><strong>Plato:</strong> {order.dish}</p>
               <p><strong>Estado:</strong> {order.status}</p>
             </li>
           ))}
@@ -58,4 +67,4 @@ const HistoryOrders = () => {
   );
 };
 
-export default HistoryOrders;
+export default PreparingOrders;
