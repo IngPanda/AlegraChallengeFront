@@ -54,7 +54,6 @@ const HistoryOrders = () => {
           <thead>
             <tr>
               <th>Orden ID</th>
-              <th>Cliente</th>
               <th>Plato</th>
               <th>Estado</th>
             </tr>
