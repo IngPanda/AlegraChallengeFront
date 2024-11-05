@@ -1,32 +1,35 @@
-import React, { useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
 
-const LoginForm: React.FC = () => {
+interface LoginFormProps {
+  setIsAuthenticated: (isAuthenticated: boolean) => void;
+}
+
+const LoginForm: React.FC<LoginFormProps> = ({ setIsAuthenticated }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const navigate = useNavigate();
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
       const response = await axios.post('https://ap5ggexpz0.execute-api.us-east-1.amazonaws.com/dev/login', {
         username,
-        password
+        password,
       }, {
         headers: {
-          'Content-Type': 'application/json'
-        }
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
       });
 
       const token = response.data.token;
-      // Guarda el token en localStorage para manejar la autenticación
       localStorage.setItem('token', token);
-      // Redirige a la página principal o una página protegida
-      navigate('/dashboard');
+      setIsAuthenticated(true);
+      setError('');
+      // Redirigir después del inicio de sesión
     } catch (error) {
-      setError(JSON.stringify(error));
+      setError('Error en las credenciales, intente nuevamente.');
     }
   };
 

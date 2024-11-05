@@ -19,7 +19,7 @@ const OrderButton: React.FC = () => {
 
   return (
     <div>
-      <button onClick={handleOrder} disabled={loading}>
+      <button onClick={handleOrder} disabled={loading} style={{ padding: '10px 20px', fontSize: '16px' }}>
         {loading ? 'Generando...' : 'Pedir Plato'}
       </button>
       {message && <p>{message}</p>}
