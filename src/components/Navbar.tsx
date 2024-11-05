@@ -45,7 +45,7 @@ const CustomNavbar: React.FC<NavbarProps> = ({ isAuthenticated, setIsAuthenticat
 
   return (
     <Navbar bg="dark" variant="dark" expand="lg">
-      <Navbar.Brand as={Link} to="/">Mi Aplicación</Navbar.Brand>
+      <Navbar.Brand as={Link} to="/">Jornada de almuerzo ¡Gratis!</Navbar.Brand>
       
       {isAuthenticated ? (
         <Nav className="mr-auto">
