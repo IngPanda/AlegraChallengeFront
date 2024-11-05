@@ -63,8 +63,7 @@ const HistoryOrders = () => {
             {orders.map((order) => (
               <tr key={order.id}>
                 <td>{order.id}</td>
-                <td>{order.customer}</td>
-                <td>{order.dish}</td>
+                <td>{order.dish.name}</td>
                 <td>{order.status}</td>
               </tr>
             ))}
