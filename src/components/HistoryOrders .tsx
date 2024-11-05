@@ -19,15 +19,13 @@ const HistoryOrders = () => {
           throw new Error('Token not found');
         }
 
-        const response = await axios.get(
-          'https://7s9x7vuh2m.execute-api.us-east-1.amazonaws.com/dev/history',
-          {
-            headers: {
-              'Authorization': `Bearer ${token}`,
-              'Content-Type': 'application/json',
-            },
-          }
-        );
+        const response = await axios.get('https://vnfx11zfya.execute-api.us-east-1.amazonaws.com/dev/history', {
+          headers: {
+            'Authorization': `Bearer ${ localStorage.getItem('token')}`,
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'      
+          },
+        });
         setOrders(response.data);
       } catch (err) {
         if (err instanceof Error) {
