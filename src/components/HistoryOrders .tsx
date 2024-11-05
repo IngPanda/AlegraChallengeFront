@@ -20,7 +20,7 @@ const HistoryOrders = () => {
         }
 
         const response = await axios.get(
-          'https://7s9x7vuh2m.execute-api.us-east-1.amazonaws.com/dev/orders',
+          'https://7s9x7vuh2m.execute-api.us-east-1.amazonaws.com/dev/history',
           {
             headers: {
               'Authorization': `Bearer ${token}`,
