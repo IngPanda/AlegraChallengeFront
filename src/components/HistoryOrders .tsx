@@ -6,7 +6,7 @@ interface Order {
   dish: any;
   status: string;
 }
-const PreparingOrders = () => {
+const HistoryOrders = () => {
   const [orders, setOrders] = useState<Order[]>([]); 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -67,4 +67,4 @@ const PreparingOrders = () => {
   );
 };
 
-export default PreparingOrders;
+export default HistoryOrders;
