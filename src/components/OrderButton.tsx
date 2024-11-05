@@ -13,7 +13,7 @@ const OrderButton: React.FC = () => {
       const response = await requestOrder();
       setMessage(`Orden generada: ${response.data.dish.name}`);
     } catch (error) {
-      setMessage('Error al generar la orden');
+      setMessage(error);
     }
     setLoading(false);
   };
