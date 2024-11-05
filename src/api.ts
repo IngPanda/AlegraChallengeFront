@@ -5,7 +5,7 @@ const API_BASE_URL = "http://localhost";  // Cambia a la URL de tus microservici
 
 // Endpoint para el servicio de pedidos (orders-service)
 export const requestOrder = () => {
-  return axios.post(process.env.URL_ORDER ?? '');
+  return axios.post('https://7s9x7vuh2m.execute-api.us-east-1.amazonaws.com/dev/order');
 };
 
 // Endpoint para el servicio de cocina (kitchen-service)
