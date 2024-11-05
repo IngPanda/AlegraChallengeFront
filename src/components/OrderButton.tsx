@@ -8,6 +8,7 @@ const OrderButton: React.FC = () => {
   const handleOrder = async () => {
     setLoading(true);
     setMessage('');
+    console.log("handleOrder called");
     try {
       const response = await requestOrder();
       setMessage(`Orden generada: ${response.data.dish.name}`);
