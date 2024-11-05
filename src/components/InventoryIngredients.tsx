@@ -25,7 +25,7 @@ const InventoryIngredients = () => {
             'Accept': 'application/json'      
           },
         });
-        setIngredients(response.data); // Assuming response.data is an object of type Ingredients
+        setIngredients(response.data);
       } catch (err) {
         if (err instanceof Error) {
           setError(err.message);
