@@ -28,7 +28,7 @@ const HistoryOrders = () => {
             },
           }
         );
-        setOrders(response.data.orders);
+        setOrders(response.data);
       } catch (err) {
         if (err instanceof Error) {
           setError(err.message);
