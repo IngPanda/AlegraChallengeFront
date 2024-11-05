@@ -46,7 +46,6 @@ const HistoryOrders = () => {
 
   return (
     <div>
-      <h2>Órdenes en Preparación</h2>
       {orders.length === 0 ? (
         <p>No hay órdenes en preparación.</p>
       ) : (
