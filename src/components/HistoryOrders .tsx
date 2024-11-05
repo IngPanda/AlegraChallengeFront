@@ -43,7 +43,7 @@ const HistoryOrders = () => {
     fetchOrders();
   }, []);
 
-  if (loading) return <p>Cargando órdenes en preparación...</p>;
+  if (loading) return <p>Cargando Hisotiral de ordenes...</p>;
   if (error) return <p>Error: {error}</p>;
 
   return (
