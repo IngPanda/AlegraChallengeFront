@@ -24,9 +24,9 @@ const HistoryOrders = () => {
           }
         );
         setOrders(response.data);
-      } catch (err) {
-        setError(err.message || 'Error fetching orders');
-      } finally {
+      }   catch (err) {
+       console.log(err);
+      }finally {
         setLoading(false);
       }
     };
