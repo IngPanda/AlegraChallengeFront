@@ -17,7 +17,7 @@ const CustomNavbar: React.FC<NavbarProps> = ({ isAuthenticated, setIsAuthenticat
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const response = await axios.post('https://ap5ggexpz0.execute-api.us-east-1.amazonaws.com/dev/login', {
+      const response = await axios.post(process.env.REACT_APP_API_URL ?? '', {
         username,
         password,
       }, {

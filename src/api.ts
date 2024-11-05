@@ -5,12 +5,12 @@ const API_BASE_URL = "http://localhost";  // Cambia a la URL de tus microservici
 
 // Endpoint para el servicio de pedidos (orders-service)
 export const requestOrder = () => {
-  return axios.post(`${API_BASE_URL}:4000/dev/order`);
+  return axios.post(process.env.URL_ORDER ?? '');
 };
 
 // Endpoint para el servicio de cocina (kitchen-service)
 export const prepareOrder = (dish: { name: string; ingredients: { [key: string]: number } }) => {
-  return axios.post(`${API_BASE_URL}:4001/dev/prepare`, { dish });
+  return axios.put(`${API_BASE_URL}:4001/dev/prepare`, { dish });
 };
 
 // Endpoint para el servicio de inventario (inventory-service)
