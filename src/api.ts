@@ -6,15 +6,16 @@ const API_BASE_URL = "http://localhost";  // Cambia a la URL de tus microservici
 // Endpoint para el servicio de pedidos (orders-service)
 export const requestOrder = () => {
   console.log('AQUI ',localStorage.getItem('token'));
-  return  axios.post('https://7s9x7vuh2m.execute-api.us-east-1.amazonaws.com/dev/order', {
+  const callAxios = axios.post('https://7s9x7vuh2m.execute-api.us-east-1.amazonaws.com/dev/order', {
   }, {
     headers: {
+      'Authorization': `Bearer ${ localStorage.getItem('token')}`,
       'Content-Type': 'application/json',
-      'Accept': 'application/json',
-       'Authorization': `Bearer ${localStorage.getItem('token')}`
+      'Accept': 'application/json'      
     },
   });
-
+  console.log(callAxios);
+  return callAxios;
   
 };
 
