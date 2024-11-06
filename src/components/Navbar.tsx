@@ -50,7 +50,7 @@ const CustomNavbar: React.FC<NavbarProps> = ({ isAuthenticated, setIsAuthenticat
       {isAuthenticated ? (
         <Nav className="mr-auto">
           <Nav.Link as={Link} to="/order-request">Pedir Orden</Nav.Link>
-          <Nav.Link as={Link} to="/preparing-orders">Órdenes en Preparación</Nav.Link>
+          <Nav.Link as={Link} to="/pending-orders">Órdenes Pendientes</Nav.Link>
           <Nav.Link as={Link} to="/ingredient-inventory">Inventario de Ingredientes</Nav.Link>
           <Nav.Link as={Link} to="/order-history">Historial de Órdenes</Nav.Link>
           <Nav.Link as={Link} to="/recipe-list">Listado de Recetas</Nav.Link>

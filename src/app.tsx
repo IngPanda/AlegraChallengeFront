@@ -6,6 +6,7 @@ import PreparingOrders from './pages/PreparingOrders';
 import IngredientInventory from './pages/IngredientInventory';
 import OrderHistory from './pages/OrderHistory';
 import RecipeList from './pages/RecipeList';
+import PendingOrders from './pages/PendingOrders';
 
 const App: React.FC = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(!!localStorage.getItem('token'));
@@ -20,7 +21,7 @@ const App: React.FC = () => {
       <CustomNavbar isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} />
       <Routes>
         <Route path="/order-request" element={isAuthenticated ? <OrderRequest /> : <Navigate to="/" />} />
-        <Route path="/preparing-orders" element={isAuthenticated ? <PreparingOrders /> : <Navigate to="/" />} />
+        <Route path="/pending-orders" element={isAuthenticated ? <PendingOrders /> : <Navigate to="/" />} />
         <Route path="/ingredient-inventory" element={isAuthenticated ? <IngredientInventory /> : <Navigate to="/" />} />
         <Route path="/order-history" element={isAuthenticated ? <OrderHistory /> : <Navigate to="/" />} />
         <Route path="/recipe-list" element={isAuthenticated ? <RecipeList /> : <Navigate to="/" />} />
