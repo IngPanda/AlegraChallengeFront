@@ -54,6 +54,7 @@ const CustomNavbar: React.FC<NavbarProps> = ({ isAuthenticated, setIsAuthenticat
           <Nav.Link as={Link} to="/ingredient-inventory">Inventario de Ingredientes</Nav.Link>
           <Nav.Link as={Link} to="/order-history">Historial de Órdenes</Nav.Link>
           <Nav.Link as={Link} to="/recipe-list">Listado de Recetas</Nav.Link>
+          <Nav.Link as={Link} to="/market-history">Historial de ordenes a mercado</Nav.Link>
           <Button variant="outline-light" onClick={handleLogout} className="ml-3">
             Cerrar sesión
           </Button>

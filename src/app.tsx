@@ -7,6 +7,7 @@ import IngredientInventory from './pages/IngredientInventory';
 import OrderHistory from './pages/OrderHistory';
 import RecipeList from './pages/RecipeList';
 import PendingOrders from './pages/PendingOrders';
+import MarketHistory from './pages/MarketHistory';
 
 const App: React.FC = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(!!localStorage.getItem('token'));
@@ -25,6 +26,7 @@ const App: React.FC = () => {
         <Route path="/ingredient-inventory" element={isAuthenticated ? <IngredientInventory /> : <Navigate to="/" />} />
         <Route path="/order-history" element={isAuthenticated ? <OrderHistory /> : <Navigate to="/" />} />
         <Route path="/recipe-list" element={isAuthenticated ? <RecipeList /> : <Navigate to="/" />} />
+        <Route path="/market-history" element={isAuthenticated ? <MarketHistory /> : <Navigate to="/" />} />
         <Route path="/" element={<Navigate to={isAuthenticated ? "/order-request" : "/"} />} />
       </Routes>
     </Router>
