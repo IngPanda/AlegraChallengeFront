@@ -6,6 +6,7 @@ interface markets {
   dishName: string;
   ingredientName: string;
   quantitySold: string;
+  createdAt: string;
 }
 const HistoryMarket = () => {
   const [markets, setMarkets] = useState<markets[]>([]); 
@@ -57,14 +58,17 @@ const HistoryMarket = () => {
               <th>Plato</th>
               <th>Ingrediente</th>
               <th>Despachado</th>
+              <th>Pedido</th>
             </tr>
           </thead>
           <tbody>
             {markets.map((market) => (
               <tr key={market.orderId}>
+                <td>{market.orderId}</td>
                 <td>{market.dishName}</td>
                 <td>{market.ingredientName}</td>
                 <td>{market.quantitySold}</td>
+                <td>{market.createdAt}</td>
               </tr>
             ))}
           </tbody>
