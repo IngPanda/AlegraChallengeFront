@@ -55,16 +55,11 @@ const PendingOrderList = () => {
         },
       });
 
-      // Check if the response message indicates success
-      if (response.data.message === 'Dish prepared') {
-        // Remove the processed order from the list
+
         setOrders((prevOrders) => prevOrders.filter((order) => order.id !== orderId));
-      } else {
-        //alert("No hay suficientes ingredientes");
-      }
+     
     } catch (error) {
-      console.error("Error processing order:", error);
-      //alert("An error occurred. Please try again.");
+      console.log(JSON.stringify(error));
     }
   };
 
