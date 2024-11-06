@@ -74,7 +74,7 @@ const HistoryOrders = () => {
               <tr key={order.id}>
                 <td>{order.id}</td>
                 <td>{order.dish.name}</td>
-                <td>{order.status}</td>
+                <td>{order.status == 'cooking' ? 'Pendiente por falta de ingredientes ' : order.status }</td>
                 <td>{formatDate(order.createdAt)}</td>
               </tr>
             ))}
