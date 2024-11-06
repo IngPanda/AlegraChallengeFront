@@ -6,7 +6,7 @@ interface Order {
   dish: any;
   status: string;
 }
-const HistoryOrders = () => {
+const PendingOrderList = () => {
   const [orders, setOrders] = useState<Order[]>([]); 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -41,6 +41,17 @@ const HistoryOrders = () => {
     fetchOrders();
   }, []);
 
+  const processOrder = async (orderId: string) => {
+    console.log(`Processing order with ID: ${orderId}`);
+    await axios.put(`https://oxps2k4dpi.execute-api.us-east-1.amazonaws.com/dev/prepare/${orderId}`, {
+          headers: {
+            'Authorization': `Bearer ${ localStorage.getItem('token')}`,
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'      
+          },
+        });
+  };
+
   if (loading) return <p>Cargando listado Ordenes Pendientes...</p>;
   if (error) return <p>Error: {error}</p>;
 
@@ -54,7 +65,7 @@ const HistoryOrders = () => {
             <tr>
               <th>Orden ID</th>
               <th>Plato</th>
-              <th>Estado</th>
+              <th>Procesar</th>
             </tr>
           </thead>
           <tbody>
@@ -62,7 +73,14 @@ const HistoryOrders = () => {
               <tr key={order.id}>
                 <td>{order.id}</td>
                 <td>{order.dish.name}</td>
-                <td>{order.status}</td>
+                <td>
+                    <button
+                    className="btn btn-primary"
+                    onClick={() => processOrder(order.id)}
+                  >
+                    Process Order
+                  </button>
+                </td>
               </tr>
             ))}
           </tbody>
@@ -72,4 +90,4 @@ const HistoryOrders = () => {
   );
 };
 
-export default HistoryOrders;
+export default PendingOrderList;
