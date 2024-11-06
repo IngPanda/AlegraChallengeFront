@@ -47,7 +47,7 @@ const PendingOrderList = () => {
     console.log(`Processing order with ID: ${orderId}`);
     
     try {
-      const response = await axios.put(`https://oxps2k4dpi.execute-api.us-east-1.amazonaws.com/dev/prepare/${orderId}`, null, {
+      const response = await axios.put(`https://oxps2k4dpi.execute-api.us-east-1.amazonaws.com/dev/prepare/${orderId}`, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`,
           'Content-Type': 'application/json',
