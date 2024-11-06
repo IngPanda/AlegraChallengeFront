@@ -60,11 +60,11 @@ const PendingOrderList = () => {
         // Remove the processed order from the list
         setOrders((prevOrders) => prevOrders.filter((order) => order.id !== orderId));
       } else {
-        alert("No hay suficientes ingredientes");
+        //alert("No hay suficientes ingredientes");
       }
     } catch (error) {
       console.error("Error processing order:", error);
-      alert("An error occurred. Please try again.");
+      //alert("An error occurred. Please try again.");
     }
   };
 
