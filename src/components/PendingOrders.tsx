@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+
 interface Order {
   id: string; 
   customer: string;
   dish: any;
   status: string;
 }
+
 const PendingOrderList = () => {
   const [orders, setOrders] = useState<Order[]>([]); 
   const [loading, setLoading] = useState(true);
@@ -21,7 +23,7 @@ const PendingOrderList = () => {
 
         const response = await axios.get('https://vnfx11zfya.execute-api.us-east-1.amazonaws.com/dev/pendings', {
           headers: {
-            'Authorization': `Bearer ${ localStorage.getItem('token')}`,
+            'Authorization': `Bearer ${token}`,
             'Content-Type': 'application/json',
             'Accept': 'application/json'      
           },
@@ -43,13 +45,27 @@ const PendingOrderList = () => {
 
   const processOrder = async (orderId: string) => {
     console.log(`Processing order with ID: ${orderId}`);
-    await axios.put(`https://oxps2k4dpi.execute-api.us-east-1.amazonaws.com/dev/prepare/${orderId}`, {
-          headers: {
-            'Authorization': `Bearer ${ localStorage.getItem('token')}`,
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'      
-          },
-        });
+    
+    try {
+      const response = await axios.put(`https://oxps2k4dpi.execute-api.us-east-1.amazonaws.com/dev/prepare/${orderId}`, null, {
+        headers: {
+          'Authorization': `Bearer ${localStorage.getItem('token')}`,
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'      
+        },
+      });
+
+      // Check if the response message indicates success
+      if (response.data.message === 'Dish prepared') {
+        // Remove the processed order from the list
+        setOrders((prevOrders) => prevOrders.filter((order) => order.id !== orderId));
+      } else {
+        alert("Failed to process the order. Please try again.");
+      }
+    } catch (error) {
+      console.error("Error processing order:", error);
+      alert("An error occurred. Please try again.");
+    }
   };
 
   if (loading) return <p>Cargando listado Ordenes Pendientes...</p>;
@@ -74,7 +90,7 @@ const PendingOrderList = () => {
                 <td>{order.id}</td>
                 <td>{order.dish.name}</td>
                 <td>
-                    <button
+                  <button
                     className="btn btn-primary"
                     onClick={() => processOrder(order.id)}
                   >
