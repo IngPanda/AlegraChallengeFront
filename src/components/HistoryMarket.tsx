@@ -13,6 +13,16 @@ const HistoryMarket = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
+  const formatDate = (dateString: string) => {
+    return new Intl.DateTimeFormat('es-ES', {
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+    }).format(new Date(dateString));
+  };
+
   useEffect(() => {
     const fetchOrders = async () => {
       try {
@@ -68,7 +78,7 @@ const HistoryMarket = () => {
                 <td>{market.dishName}</td>
                 <td>{market.ingredientName}</td>
                 <td>{market.quantitySold}</td>
-                <td>{market.createdAt}</td>
+                <td>{formatDate(market.createdAt)}</td>
               </tr>
             ))}
           </tbody>
