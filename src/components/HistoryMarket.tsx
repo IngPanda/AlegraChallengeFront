@@ -31,7 +31,7 @@ const HistoryMarket = () => {
           throw new Error('Token not found');
         }
 
-        const response = await axios.get('https://30ghaa3wj8.execute-api.us-east-1.amazonaws.com/dev/market/history', {
+        const response = await axios.get('https://a2ffc1rut9.execute-api.us-east-1.amazonaws.com/dev/market/history', {
           headers: {
             'Authorization': `Bearer ${ localStorage.getItem('token')}`,
             'Content-Type': 'application/json',

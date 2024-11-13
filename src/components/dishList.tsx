@@ -24,7 +24,7 @@ const DishesList = () => {
           throw new Error('Token not found');
         }
 
-        const response = await axios.get('https://oxps2k4dpi.execute-api.us-east-1.amazonaws.com/dev/disheslist', {
+        const response = await axios.get('https://3p3u6brpl8.execute-api.us-east-1.amazonaws.com/dev/disheslist', {
           headers: {
             'Authorization': `Bearer ${ localStorage.getItem('token')}`,
             'Content-Type': 'application/json',

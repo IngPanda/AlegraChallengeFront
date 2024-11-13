@@ -13,7 +13,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ setIsAuthenticated }) => {
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const response = await axios.post('https://ap5ggexpz0.execute-api.us-east-1.amazonaws.com/dev/login', {
+      const response = await axios.post('https://i0upq2eps0.execute-api.us-east-1.amazonaws.com/dev/login', {
         username,
         password,
       }, {
