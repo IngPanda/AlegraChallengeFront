@@ -21,7 +21,7 @@ const PendingOrderList = () => {
           throw new Error('Token not found');
         }
 
-        const response = await axios.get('https://vnfx11zfya.execute-api.us-east-1.amazonaws.com/dev/pendings', {
+        const response = await axios.get('https://n2tan93a0m.execute-api.us-east-1.amazonaws.com/dev/pendings', {
           headers: {
             'Authorization': `Bearer ${token}`,
             'Content-Type': 'application/json',
